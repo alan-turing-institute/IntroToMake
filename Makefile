@@ -1,6 +1,8 @@
 # Makefile for analysis report
 #
 
+.PHONY: all clean
+
 all: output/report.pdf
 
 output/figure_1.png: data/input_file_1.csv scripts/generate_histogram.py
@@ -14,4 +16,5 @@ output/report.pdf: report/report.tex output/figure_1.png output/figure_2.png
 
 clean:
 	rm -f output/report.pdf
-	rm -f output/figure_*.png
+	rm -f output/figure_1.png
+	rm -f output/figure_2.png
