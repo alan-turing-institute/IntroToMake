@@ -3,27 +3,52 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 
+\newcommand{\myfigure}[1]{%
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[height=5cm]{../output/figure_#1.png}
+		\caption{Histogram of ratings of movies in the ``#1'' genre.}
+		\label{fig:#1}
+	\end{figure}
+}
+
 \title{Making Histograms}
+\author{Joe Bloggs}
 \date{\today}
 
 \begin{document}
 \maketitle
 
-Here's a histogram:
+Here are the histograms:
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[height=5cm]{../output/figure_1.png}
-	\caption{figure 1.png}
-	\label{fig:1}
-\end{figure}
+\myfigure{action}
+\myfigure{adult}
+\myfigure{adventure}
+\myfigure{animation}
+\myfigure{biography}
+\myfigure{comedy}
+\myfigure{crime}
+\myfigure{documentary}
+\myfigure{drama}
+\myfigure{family}
+\myfigure{fantasy}
+\myfigure{filmnoir}
+\myfigure{gameshow}
+\myfigure{history}
+\myfigure{horror}
+\myfigure{musical}
+\myfigure{music}
+\myfigure{mystery}
+\myfigure{news}
+\myfigure{realitytv}
+\myfigure{romance}
+\myfigure{scifi}
+\myfigure{short}
+\myfigure{sport}
+\myfigure{talkshow}
+\myfigure{thriller}
+\myfigure{war}
+\myfigure{western}
 
-Here's another:
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[height=5cm]{../output/figure_2.png}
-	\caption{figure 2.png}
-	\label{fig:2}
-\end{figure}
 
 \end{document}
