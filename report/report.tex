@@ -2,12 +2,21 @@
 
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage[center]{subfigure}
 
 \newcommand{\myfigure}[1]{%
 	\begin{figure}[!ht]
 		\centering
-		\includegraphics[height=5cm]{../output/figure_#1.png}
-		\caption{Histogram of ratings of movies in the ``#1'' genre.}
+		\subfigure[Histogram for the ``#1'' genre.]{%
+			\includegraphics[height=5cm]{../output/histogram_#1.png}
+			\label{fig:histogram_#1}
+		}%
+		\quad
+		\subfigure[QQ-plot for the ``#1'' genre.]{%
+			\includegraphics[height=5cm]{../output/qqplot_#1.png}
+			\label{fig:qqplot_#1}
+		}%
+		\caption{Histogram and QQ-plot for ratings of movies in the ``#1'' genre.}
 		\label{fig:#1}
 	\end{figure}
 }

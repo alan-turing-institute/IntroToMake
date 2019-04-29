@@ -3,18 +3,22 @@
 
 ALL_CSV = $(wildcard data/*.csv)
 DATA = $(filter-out $(wildcard data/input_file_*.csv),$(ALL_CSV))
-FIGURES = $(patsubst data/%.csv,output/figure_%.png,$(DATA))
+HISTOGRAMS = $(patsubst data/%.csv,output/histogram_%.png,$(DATA))
+QQPLOTS = $(patsubst data/%.csv,output/qqplot_%.png,$(DATA))
 
 .PHONY: all clean
 
 all: output/report.pdf
 
-$(FIGURES): output/figure_%.png: data/%.csv scripts/generate_histogram.py
+$(HISTOGRAMS): output/histogram_%.png: data/%.csv scripts/generate_histogram.py
 	python scripts/generate_histogram.py -i $< -o $@
 
-output/report.pdf: report/report.tex $(FIGURES)
+$(QQPLOTS): output/qqplot_%.png: data/%.csv scripts/generate_qqplot.py
+	python scripts/generate_qqplot.py -i $< -o $@
+
+output/report.pdf: report/report.tex $(HISTOGRAMS) $(QQPLOTS)
 	cd report/ && pdflatex report.tex && mv report.pdf ../$@
 
 clean:
 	rm -f output/report.pdf
-	rm -f $(FIGURES)
+	rm -f $(HISTOGRAMS) $(QQPLOTS)
