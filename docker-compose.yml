@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  make_source_code:
+    image: make_img
+    volumes:
+      - ./:/usr/src/app
+    command: tail -F anything
